@@ -17,28 +17,25 @@ const Weather = () => {
     function handleChange(e) {
         setCity(e.target.value)
     }
-
+    
     async function fetchData() {
         try {
             let response = await fetch(url)
             let output = await response.json()
             if (response.ok) {
                 setWeather(output)
-                console.log(output)
                 setError('')
 
             } else {
                 setError('Please Enter Correct City Name!')
+                setWeather('')
             }
 
         }
         catch (error) {
-
         }
     }
     return (
-
-
 
         <div className="container">
             <div className='heading'><h3>Weather App</h3></div>
@@ -60,7 +57,7 @@ const Weather = () => {
                     </div>
 
                     <div className="weather-temp">
-                        <h2> {weather.main.temp} <span>&deg;C</span> </h2>
+                        <h2> {Math.floor(weather.main.temp)} <span>&deg;C</span> </h2>
                     </div>
 
                     <div className="weather-city">
@@ -77,31 +74,18 @@ const Weather = () => {
                             </div>
                             <h3 className="wind-speed">{weather.wind.speed} <span>Km/h</span></h3>
                             <h3 className="wind-heading">Wind Speed</h3>
-
                         </div>
-
                         <div className="humidity">
                             <div className="humidity-icon">
                                 <WiHumidity></WiHumidity>
-
                             </div>
                             <h3 className="humidity-percent">{weather.main.humidity} <span>%</span></h3>
                             <h3 className="humidity-heading">Humidity</h3>
                         </div>
-
                     </div>
-
-
                 </div>
             }
-
-
-
-
         </div>
-
     )
-
 }
-
 export default Weather
