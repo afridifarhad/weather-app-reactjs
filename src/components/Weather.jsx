@@ -11,7 +11,7 @@ const Weather = () => {
     const [weather, setWeather] = useState()
     const [error, setError] = useState('')
 
-    const API_KEY = "94ca31b5780c837c2e80056b43486675"
+    const API_KEY = import.meta.env.VITE_API_KEY
     const url = (`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${API_KEY}`)
 
     function handleChange(e) {
